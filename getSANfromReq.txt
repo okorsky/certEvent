@@ -1,0 +1,8 @@
+foreach ($e in $r.X509Extensions){
+    if ($e.ObjectId.FriendlyName -eq "Subject Alternative Name"){
+        #$e.RawData(1)
+        $SAN = New-Object -ComObject X509Enrollment.CX509ExtensionAlternativeNames
+        $SAN.InitializeDecode(1, $e.RawData(1))
+        $SAN.AlternativeNames[0].strValue
+    }
+}
