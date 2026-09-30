@@ -1,0 +1,29 @@
+; Deploy: copy to C:\Windows\CAPolicy.inf before AD CS install / CA renewal
+; ==============================================================
+
+[Version]
+Signature="$Windows NT$"
+
+[Extensions]
+2.5.29.15="AwIBBg=="
+Critical=2.5.29.15
+
+[BasicConstraintsExtension]
+PathLength=0
+Critical=Yes
+
+[PolicyStatementExtension]
+Policies=NS-Internal-Certificate-Policy
+Critical=No
+
+[NS-Internal-Certificate-Policy]
+OID=1.3.6.1.4.1.66377.1.1.1.1
+Notice=" Internal Certificate Policy - backoffice services."
+URL="http://pki.itresource.nl/pki/pki-cps.pdf"
+
+[Certsrv_Server]
+RenewalKeyLength=4096
+RenewalValidityPeriod=Years
+RenewalValidityPeriodUnits=7
+LoadDefaultTemplates=0
+AlternateSignatureAlgorithm=0
